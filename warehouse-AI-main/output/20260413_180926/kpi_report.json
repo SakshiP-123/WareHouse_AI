@@ -1,0 +1,53 @@
+{
+  "header": {
+    "period": "2025-06-01 → 2025-06-30",
+    "warehouses": [
+      [
+        "WH-01"
+      ]
+    ],
+    "status": "complete"
+  },
+  "summary_cards": [
+    {
+      "name": "Fill Rate %",
+      "current": "—",
+      "target": 95.0,
+      "delta": null,
+      "status": "—",
+      "comment": "No data available"
+    },
+    {
+      "name": "OTIF %",
+      "current": "—",
+      "target": 92.0,
+      "delta": null,
+      "status": "—",
+      "comment": "No data available"
+    },
+    {
+      "name": "Days of Supply (AX)",
+      "current": "—",
+      "target": 25.0,
+      "delta": null,
+      "status": "—",
+      "comment": "No data available"
+    },
+    {
+      "name": "Lines Picked per Labor-Hour",
+      "current": "—",
+      "target": 6.0,
+      "delta": null,
+      "status": "—",
+      "comment": "No data available"
+    },
+    {
+      "name": "Error Rate %",
+      "current": "—",
+      "target": 0.8,
+      "delta": null,
+      "status": "—",
+      "comment": "No data available"
+    }
+  ]
+}

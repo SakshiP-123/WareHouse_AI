@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse KPI Leadership Summary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f5f5f5; 
+            padding: 20px;
+            font-size: 12px;
+        }
+       .container { max-width: 1400px; margin: 0 auto; background: white; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { font-size: 24px; margin-bottom: 5px; }
+        .header-info { font-size: 13px; }
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .status-GREEN { background: #10b981; color: white; }
+        .status-AMBER { background: #f59e0b; color: white; }
+        .status-RED { background: #ef4444; color: white; }
+        
+        /* Top Summary Cards */
+        .top-summary {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .summary-card h3 { font-size: 11px; color: #6b7280; margin-bottom: 8px; text-transform: uppercase; }
+        .summary-card  .value { font-size: 28px; font-weight: bold; margin-bottom: 5px; }
+        .summary-card .target { font-size: 11px; color: #9ca3af; }
+        .summary-card .delta { font-size: 12px; font-weight: 600; margin-top: 5px; }
+        .delta-positive { color: #10b981; }
+        .delta-negative { color: #ef4444; }
+        
+        /* Sections */
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .section-tile {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .section-tile h2 {
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .section-tile .kpi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .section-tile .kpi-row:last-child { border-bottom: none; }
+        .section-tile .kpi-name { color: #4b5563; font-size: 11px; }
+        .section-tile .kpi-value { font-weight: 600; font-size: 12px; }
+        
+        /* KPI Table */
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .kpi-table th {
+            background: #f9fafb;
+            padding: 12px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .kpi-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 11px;
+        }
+        .kpi-table tr:last-child td { border-bottom: none; }
+        .kpi-table tr:hover { background: #f9fafb; }
+        
+        /* Insights */
+        .insights {
+            background: #fff7ed;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .insights h2 {
+            font-size: 16px;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        .insights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .insights li {
+            padding: 6px 0;
+            color: #78350f;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        .insights li:before {
+            content: "▸ ";
+            color: #f59e0b;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .status-dot.green { background: #10b981; }
+        .status-dot.amber { background: #f59e0b; }
+        .status-dot.red { background: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>🏭 Warehouse KPI Leadership Summary</h1>
+                <div class="header-info">
+                    <strong>Period:</strong> 2025-06-01 → 2025-06-30 &nbsp;|&nbsp;
+                    <strong>Warehouse:</strong> ['WH-01']
+                </div>
+            </div>
+            <div class="status-badge status-GREEN">GREEN</div>
+        </div>
+        
+        <!-- Top Summary Cards -->
+        <div class="top-summary">
+            <div class="summary-card">
+                <h3>Fill Rate %</h3>
+                <div class="value"><span class="status-dot amber"></span>—</div>
+                <div class="target">Target: 95.0</div>
+                <div class="delta ">—</div>
+            </div>
+            <div class="summary-card">
+                <h3>OTIF %</h3>
+                <div class="value"><span class="status-dot amber"></span>—</div>
+                <div class="target">Target: 92.0</div>
+                <div class="delta ">—</div>
+            </div>
+            <div class="summary-card">
+                <h3>Days of Supply (AX)</h3>
+                <div class="value"><span class="status-dot amber"></span>—</div>
+                <div class="target">Target: 25.0</div>
+                <div class="delta ">—</div>
+            </div>
+            <div class="summary-card">
+                <h3>Lines Picked per Labor-Hour</h3>
+                <div class="value"><span class="status-dot amber"></span>—</div>
+                <div class="target">Target: 6.0</div>
+                <div class="delta ">—</div>
+            </div>
+            <div class="summary-card">
+                <h3>Error Rate %</h3>
+                <div class="value"><span class="status-dot amber"></span>—</div>
+                <div class="target">Target: 0.8</div>
+                <div class="delta ">—</div>
+            </div>
+        </div>
+        
+        <!-- Collection Sections -->
+        <div class="sections">
+            <div class="section-tile">
+                <h2>📦 Inbound</h2>
+                <div class="kpi-row">
+                    <span class="kpi-name"></span>
+                    <span class="kpi-value">—</span>
+                </div>
+            </div>
+            <div class="section-tile">
+                <h2>🚚 Outbound</h2>
+                <div class="kpi-row">
+                    <span class="kpi-name"></span>
+                    <span class="kpi-value">—</span>
+                </div>
+            </div>
+            <div class="section-tile">
+                <h2>📊 Inventory</h2>
+                <div class="kpi-row">
+                    <span class="kpi-name"></span>
+                    <span class="kpi-value">—</span>
+                </div>
+            </div>
+            <div class="section-tile">
+                <h2>🏭 Warehouse Productivity</h2>
+                <div class="kpi-row">
+                    <span class="kpi-name"></span>
+                    <span class="kpi-value">—</span>
+                </div>
+            </div>
+            <div class="section-tile">
+                <h2>👷 Employee Productivity</h2>
+                <div class="kpi-row">
+                    <span class="kpi-name"></span>
+                    <span class="kpi-value">—</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- KPI Table -->
+        <h2 style="margin-bottom: 10px; color: #111827;">Tabular KPI Summary</h2>
+        <table class="kpi-table">
+            <thead>
+                <tr>
+                    <th>KPI</th>
+                    <th>Current</th>
+                    <th>Target</th>
+                    <th>Delta</th>
+                    <th>Status</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fill Rate %</td>
+                    <td>—</td>
+                    <td>95.0</td>
+                    <td>—</td>
+                    <td><span class="status-dot amber"></span>—</td>
+                    <td>No data available</td>
+                </tr>
+                <tr>
+                    <td>OTIF %</td>
+                    <td>—</td>
+                    <td>92.0</td>
+                    <td>—</td>
+                    <td><span class="status-dot amber"></span>—</td>
+                    <td>No data available</td>
+                </tr>
+                <tr>
+                    <td>Days of Supply (AX)</td>
+                    <td>—</td>
+                    <td>25.0</td>
+                    <td>—</td>
+                    <td><span class="status-dot amber"></span>—</td>
+                    <td>No data available</td>
+                </tr>
+                <tr>
+                    <td>Lines Picked per Labor-Hour</td>
+                    <td>—</td>
+                    <td>6.0</td>
+                    <td>—</td>
+                    <td><span class="status-dot amber"></span>—</td>
+                    <td>No data available</td>
+                </tr>
+                <tr>
+                    <td>Error Rate %</td>
+                    <td>—</td>
+                    <td>0.8</td>
+                    <td>—</td>
+                    <td><span class="status-dot amber"></span>—</td>
+                    <td>No data available</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Insights & Actions -->
+        <div class="insights">
+            <h2>💡 Insights & Recommended Actions</h2>
+            <ul>
+                <li>All key metrics are within target range. Continue monitoring performance.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

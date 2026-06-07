@@ -1,0 +1,51 @@
+{
+  "header": {
+    "period": "2024-03-01 → 2026-02-28",
+    "warehouses": [
+      "WH-03"
+    ],
+    "status": "complete"
+  },
+  "summary_cards": [
+    {
+      "name": "Fill Rate %",
+      "current": 80.06,
+      "target": 95.0,
+      "delta": -14.94,
+      "status": "AMBER",
+      "comment": "Review performance"
+    },
+    {
+      "name": "OTIF %",
+      "current": 4.78,
+      "target": 92.0,
+      "delta": 87.22,
+      "status": "RED",
+      "comment": "Immediate action needed"
+    },
+    {
+      "name": "Days of Supply (AX)",
+      "current": 43.76,
+      "target": 25.0,
+      "delta": 18.76,
+      "status": "GREEN",
+      "comment": "Meeting target"
+    },
+    {
+      "name": "Lines Picked per Labor-Hour",
+      "current": 7.93,
+      "target": 6.0,
+      "delta": 1.93,
+      "status": "GREEN",
+      "comment": "Meeting target"
+    },
+    {
+      "name": "Error Rate %",
+      "current": 1.59,
+      "target": 0.8,
+      "delta": 0.79,
+      "status": "AMBER",
+      "comment": "Review performance"
+    }
+  ]
+}
