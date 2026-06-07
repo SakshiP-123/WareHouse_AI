@@ -934,7 +934,7 @@ This project follows a schema-driven architecture. When adding new features:
 
 ## 👥 Authors
 
-- **Vishal** - [GitHub]
+- **Sakshi** - [GitHub]
 
 ---
 
